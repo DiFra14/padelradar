@@ -20,9 +20,9 @@ export default {
 <style lang="scss">
 :root {
   --dark-color: #444545;
-  --primary-color: #0091AD;
-  --green-color: #468966;
-  --red-color: #8E2800;
+  --primary-color: #F2CD5C;
+  --green-color: #53BF99;
+  --red-color: #E82C0C;
 }
 
 * {
@@ -65,5 +65,12 @@ html {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: white;
+  transition: all .4s;
+  font-weight: 700;
+
+  &:hover {
+    background: var(--primary-color);
+    color: white;
+  }
 }
 </style>

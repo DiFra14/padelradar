@@ -57,7 +57,6 @@ export default {
 
   &__details {
     &__address {
-      margin-top: 1.5rem;
       font-size: 1.6rem;
       color: var(--dark-color);
     }
@@ -74,13 +73,12 @@ export default {
       justify-content: space-between;
 
       &__phone {
-        color: var(--primary-color);
         font-weight: 700;
       }
     }
 
     &__week {
-      margin-top: 3.5rem;
+      margin: 3.5rem 0;
       font-size: 1.6rem;
 
       & > p {
@@ -91,7 +89,8 @@ export default {
         margin-top: 1rem;
 
         & > li {
-          list-style: none;
+          list-style: circle;
+          margin-left: 2rem;
         }
       }
     }
@@ -103,5 +102,6 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 </style>

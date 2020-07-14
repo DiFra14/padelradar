@@ -39,6 +39,7 @@ export default {
   box-shadow: .5rem .3rem 1.2rem rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin-bottom: 2rem;
+  transition: all .4s;
 
   &__details {
     display: flex;
@@ -64,6 +65,10 @@ export default {
       font-size:  1.2rem;
       color: var(--dark-color);
     }
+  }
+
+  &:hover {
+    box-shadow: 1em .3rem 1.2rem rgba(0, 0, 0, 0.3);
   }
 }
 

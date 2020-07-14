@@ -21,19 +21,21 @@
 
 <script>
 import Padel from '@/components/Padel.vue';
+import getLocation from '@/utils/geo';
 import { mapState } from 'vuex';
 
 export default {
-  props: {
-    position: {
-      required: true,
-      type: String,
-    },
+  data() {
+    return {
+      position: '',
+    };
   },
   components: {
     Padel,
   },
-  created() {
+  async created() {
+    const { latitude, longitude } = await getLocation();
+    this.position = `${latitude},${longitude}`;
     this.$store.dispatch('getPadelsByLocation', this.position);
   },
   computed: {

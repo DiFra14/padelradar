@@ -38,6 +38,16 @@
     &__li {
       list-style: none;
 
+      & > a {
+        text-decoration: none;
+        color: var(--dark-color);
+        font-weight: 700;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
       &:not(:last-child) {
         margin-right: 4rem;
       }
