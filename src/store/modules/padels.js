@@ -25,7 +25,7 @@ export const actions = {
     commit('SET_LOADER', true);
     PadelServices.getPadelByLocations(location)
       .then((res) => {
-        commit('SET_PADELS', res.data.results);
+        commit('SET_PADELS', res.data);
         commit('SET_LOADER', false);
       })
       .catch((error) => {

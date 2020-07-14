@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="location">
-      <p class="location__text">Campi da Padel a <span class="important-text">Roma</span></p>
+      <p class="location__text">Campi da Padel a
+        <span class="important-text">
+          {{ position }}
+        </span>
+      </p>
       <span class="location__icon">
         <fontawesome :icon="['fas', 'plus']" size="2x" />
       </span>
@@ -10,7 +14,7 @@
       <p>CARICAMENTO...</p>
     </div>
     <template v-else>
-      <Padel v-for="padel in padel.padels" :key="padel.place_id" :padel="padel"/>
+      <Padel v-for="padel in padel.padels.results" :key="padel.place_id" :padel="padel"/>
     </template>
   </div>
 </template>
@@ -20,14 +24,25 @@ import Padel from '@/components/Padel.vue';
 import { mapState } from 'vuex';
 
 export default {
+  props: {
+    position: {
+      required: true,
+      type: String,
+    },
+  },
   components: {
     Padel,
   },
   created() {
-    this.$store.dispatch('getPadelsByLocation', '41.909986,12.3959154');
+    this.$store.dispatch('getPadelsByLocation', this.position);
   },
   computed: {
     ...mapState(['padel']),
+  },
+  methods: {
+    nextPage(nextPage) {
+      console.log('go to:', nextPage);
+    },
   },
 };
 </script>
