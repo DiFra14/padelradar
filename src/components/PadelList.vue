@@ -22,7 +22,7 @@
 <script>
 import Padel from '@/components/Padel.vue';
 import getLocation from '@/utils/geo';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   data() {
@@ -36,7 +36,7 @@ export default {
   async created() {
     const { latitude, longitude } = await getLocation();
     this.position = `${latitude},${longitude}`;
-    this.$store.dispatch('getPadelsByLocation', this.position);
+    this.getPadelsByLocation(this.position);
   },
   computed: {
     ...mapState(['padel']),
@@ -45,6 +45,7 @@ export default {
     nextPage(nextPage) {
       console.log('go to:', nextPage);
     },
+    ...mapActions({ getPadelsByLocation: 'padel/getPadelsByLocation' }),
   },
 };
 </script>

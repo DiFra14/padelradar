@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: process.env.VUE_APP_ENDPOINT,
+  baseURL: `${process.env.VUE_APP_PROXY}/${process.env.VUE_APP_ENDPOINT}`,
 });
 
 export default {

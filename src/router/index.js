@@ -26,7 +26,7 @@ const routes = [
     component: () => import('../views/Dettaglio.vue'),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
-      store.dispatch('getPadelDetailsById', routeTo.params.id).then((padel) => {
+      store.dispatch('padel/getPadelDetailsById', routeTo.params.id).then((padel) => {
         routeTo.params.padel = padel;
         next();
       });

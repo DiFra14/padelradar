@@ -1,7 +1,7 @@
 <template>
   <div class="padel">
     <p class="titolo">{{ padel.name }}</p>
-    <Map/>
+    <Map :lat="padel.geometry.location.lat" :lng="padel.geometry.location.lng" />
     <div class="padel__details">
       <div class="preferito">
         <p class="padel__details__address">
@@ -20,7 +20,10 @@
             {{ padel.website }}
           </a>
         </div>
-        <p class="padel__details__info__voto">{{ padel.rating }}</p>
+        <p class="padel__details__info__voto">
+          <fontawesome :icon="['fas', 'star']" />
+          {{ padel.rating }}
+        </p>
       </div>
       <div class="padel__details__week">
         <p>Orari di apertura:</p>
@@ -35,6 +38,8 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
+
 import Map from '@/components/Map.vue';
 
 export default {

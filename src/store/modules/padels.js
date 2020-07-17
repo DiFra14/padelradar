@@ -2,6 +2,8 @@
 
 import PadelServices from '@/services/PadelService';
 
+export const namespaced = true;
+
 export const state = {
   padels: [],
   loader: false,

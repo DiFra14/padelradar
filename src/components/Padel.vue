@@ -13,7 +13,10 @@
     </div>
     <div class="padel__details">
       <div>
-        <p class="padel_details__voto">{{ padel.rating }}</p>
+        <p class="padel_details__voto">
+          <fontawesome :icon="['fas', 'star']" />
+          {{ padel.rating }}
+        </p>
       </div>
       <div>
         <router-link class="btn btn-dettaglio"
