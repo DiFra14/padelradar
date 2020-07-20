@@ -19,9 +19,9 @@
         </p>
       </div>
       <div>
-        <router-link class="btn btn-dettaglio"
-        :to="{ name: 'dettaglio', params: { id: padel.place_id } }">
-          Dettagli
+        <router-link class="btn btn-primary"
+          :to="{ name: 'dettaglio', params: { id: padel.place_id } }">
+            Dettagli
         </router-link>
       </div>
     </div>

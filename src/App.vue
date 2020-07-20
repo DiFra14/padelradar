@@ -59,9 +59,10 @@ html {
   text-decoration: none;
   font-size: 1.2rem;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
-.btn-dettaglio {
+.btn-primary {
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
   background: white;
@@ -71,6 +72,20 @@ html {
   &:hover {
     background: var(--primary-color);
     color: white;
+  }
+}
+
+.btn-secondary {
+  color: white;
+  background: var(--primary-color);
+  transition: all .4s;
+  font-weight: 700;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
   }
 }
 </style>
