@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="location">
-      <p class="location__text">Campi da Padel a
+      <p class="location__text">Padel nei pressi di
         <span class="important-text">
-          {{ position }}
+          {{ address }}
         </span>
       </p>
       <span class="location__icon">
@@ -22,12 +22,14 @@
 <script>
 import Padel from '@/components/Padel.vue';
 import getLocation from '@/utils/geo';
+import LocationService from '@/services/LocationService';
 import { mapState, mapActions } from 'vuex';
 
 export default {
   data() {
     return {
       position: '',
+      address: '',
     };
   },
   components: {
@@ -37,6 +39,8 @@ export default {
     const { latitude, longitude } = await getLocation();
     this.position = `${latitude},${longitude}`;
     this.getPadelsByLocation(this.position);
+    const address = await LocationService.getAddressFromCoords(latitude, longitude);
+    this.address = address.data.results[0].formatted_address;
   },
   computed: {
     ...mapState(['padel']),

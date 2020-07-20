@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="titolo">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="titolo">Dove andrai a giocare a Padel questa volta?</p>
     <PadelList />
   </div>
 </template>

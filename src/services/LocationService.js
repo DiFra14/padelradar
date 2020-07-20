@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: `${process.env.VUE_APP_PROXY}/https://maps.googleapis.com/maps/api/`,
+  baseURL: `${process.env.VUE_APP_PROXY}/${process.env.VUE_APP_MAP_ENDPOINT}`,
 });
 
 export default {
