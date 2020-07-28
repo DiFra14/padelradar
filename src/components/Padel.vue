@@ -19,9 +19,12 @@
         </p>
       </div>
       <div>
-        <router-link class="btn btn-primary"
-          :to="{ name: 'dettaglio', params: { id: padel.place_id } }">
-            Dettagli
+        <router-link
+          v-if="disabled()"
+          class="btn btn-primary"
+          :to="{ name: 'dettaglio', params: { id: padel.place_id } }"
+        >
+          Dettagli
         </router-link>
       </div>
     </div>
@@ -32,6 +35,11 @@
 export default {
   props: {
     padel: Object,
+  },
+  methods: {
+    disabled() {
+      return this.padel.opening_hours;
+    },
   },
 };
 </script>

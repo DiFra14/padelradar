@@ -37,7 +37,7 @@
 
 import Padel from '@/components/Padel.vue';
 import Modal from '@/components/Modal.vue';
-import getLocation from '@/utils/geo';
+import { getLocation } from '@/utils/utils';
 import LocationService from '@/services/LocationService';
 import { mapState, mapActions } from 'vuex';
 

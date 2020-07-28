@@ -8,7 +8,12 @@
           <fontawesome :icon="['fas', 'map-pin']" />
           {{ padel.formatted_address }}
         </p>
-        <p class="padel__details__pref"><fontawesome :icon="['fas', 'heart']" size="2x" /></p>
+        <p class="padel__details__pref"
+          @click="addToFavorite(padel)"
+          :class="[ isFavorited() ? 'fav' : 'no-fav' ]"
+        >
+          <fontawesome :icon="['fas', 'heart']" size="2x" />
+        </p>
       </div>
       <div class="padel__details__info">
         <div>
@@ -41,6 +46,7 @@
 /* eslint-disable no-unused-vars */
 
 import Map from '@/components/Map.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -52,6 +58,29 @@ export default {
       type: Object,
     },
   },
+  computed: {
+    ...mapGetters({ getPadelFavoriteById: 'padel/getPadelFavoriteById' }),
+  },
+  methods: {
+    ...mapActions({ setPadelsFavorite: 'padel/setPadelsFavorite' }),
+    addToFavorite(padel) {
+      if (this.isFavorited()) {
+        console.log('già è favorito!');
+      } else {
+        const padelFavorite = {
+          name: padel.name,
+          opening_hours: padel.opening_hours,
+          formatted_address: padel.formatted_address,
+          rating: padel.rating,
+          place_id: padel.place_id,
+        };
+        this.setPadelsFavorite(padelFavorite);
+      }
+    },
+    isFavorited() {
+      return this.getPadelFavoriteById(this.padel.place_id);
+    },
+  },
 };
 </script>
 
@@ -61,13 +90,13 @@ export default {
   flex-direction: column;
 
   &__details {
+    &__pref {
+      cursor: pointer;
+    }
+
     &__address {
       font-size: 1.6rem;
       color: var(--dark-color);
-    }
-
-    &__pref {
-      color: var(--red-color);
     }
 
     &__info {
@@ -100,6 +129,13 @@ export default {
       }
     }
   }
+}
+
+.fav {
+  color: var(--red-color);
+}
+.no-fav {
+  color: var(--primary-color);
 }
 
 .preferito {
